@@ -1,0 +1,27 @@
+livy:
+  endpoint: "https://knox-host:8443/gateway/cdp-proxy-api/livy/"
+  auth:
+    method: "basic"
+    username: "user"
+    password: "password"
+  ssl:
+    verify: "/path/to/gateway-client-trust.pem"
+
+spark:
+  master: "yarn"
+  queue: "default"
+  dynamic_allocation: false
+  executor_instances: 2
+  executor_cores: 2
+  executor_memory: "4g"
+  driver_memory: "2g"
+  extra_conf:
+    spark.pyspark.python: "python3"
+    spark.pyspark.driver.python: "python3"
+    spark.yarn.queue: "default"
+    spark.yarn.maxAppAttempts: "1"
+    spark.sql.session.timeZone: "UTC"
+
+runner:
+  reuse_session: true
+  session_file: ".livy_session"
